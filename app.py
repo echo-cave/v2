@@ -38,9 +38,9 @@ def get_cave():
     line=linecache.getline(os.getcwd()+'/cave.txt',i)
     return str(line).strip()
 
-print("\033[45mEcho-Cave v2.0.1-dev\033[0m" + "  " + "\033[46mPowerd By RDPStudio\033[0m")
+print("\033[45mEcho-Cave v2.0.2-dev\033[0m" + "  " + "\033[46mPowerd By RDPStudio\033[0m")
 print("\n")
-print("\033[36m" + get_cave() + "\033[0m")
+print("\033[46m" + get_cave() + "\033[0m")
 
 @app.route('/')
 @limiter.exempt
