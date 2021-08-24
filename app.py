@@ -27,7 +27,7 @@ def index():
 
 @app.route('/api')
 def api():
-  type = request.args.get("type")
+  type = request.args.get("encode")
   if type=="js":
     return '(function cave(){var cave="' + get_cave() + '";var dom=document.querySelector(".cave");Array.isArray(dom)?dom[0].innerText=cave:dom.innerText=cave;})()'
   elif type=="json":
