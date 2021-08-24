@@ -72,6 +72,11 @@ def api():
   else:
     return get_cave()
 
+fp = Blueprint(
+        'statics', __name__,
+        url_prefix="/" + urlPath,
+        static_folder="statics_template/", static_url_path='/static/dist')
+
 flask_profiler.init_app(app)
 
 if (__name__ == "__main__"):
