@@ -12,17 +12,17 @@ CORS(app, supports_credentials=True)
 print("Updateing Database")
 url = 'https://cdn.jsdelivr.net/gh/echo-cave/cave@latest/cave.txt'
 r = requests.get(url)
-with open("cave.txt", "w") as f:
-  f.write(str(r.content.decode("gb2312").encode("utf-8")).strip())
+with open("cave.txt", "w", encoding="utf-8") as f:
+  f.write(str(r.text).strip())
 
 def get_cave():
     txt = open(os.getcwd()+'/cave.txt','rb')
-    data = str(txt.read())
+    data = str(txt.read().decode('utf-8'))
     txt.close()
     n = data.count('\n')
     i = random.randint(1, (n+1))
     line=linecache.getline(os.getcwd()+'/cave.txt',i)
-    return str(line)
+    return str(line).strip()
 
 print("\033[45mEcho-Cave v2.0.1-dev\033[0m" + "  " + "\033[46mPowerd By RDPStudio\033[0m")
 print("\n")
