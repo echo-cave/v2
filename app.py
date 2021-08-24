@@ -72,5 +72,7 @@ def api():
   else:
     return get_cave()
 
+flask_profiler.init_app(app)
+
 if (__name__ == "__main__"):
     app.run(host = '0.0.0.0', port = 31000, debug=False)
