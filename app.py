@@ -11,7 +11,6 @@ import linecache
 
 # Config Start
 RATELIMIT_STORAGE_URL = "redis://127.0.0.1:6379"  # 将被限制不可以再正常访问的请求放入缓存
-# Config End
 
 app = Flask(__name__)
 CORS(app, supports_credentials=True)
@@ -19,7 +18,7 @@ CORS(app, supports_credentials=True)
 limiter = Limiter(
     app,
     key_func=get_remote_address,
-    default_limits=["10000 per day", "500 per hour"], # 全局配置,一般不要配置
+    default_limits=[], # 全局配置,一般不要配置
     storage_uri=RATELIMIT_STORAGE_URL,
     headers_enabled=True  # X-RateLimit写入响应头。
 )
@@ -37,8 +36,10 @@ app.config["flask_profiler"] = {
     "ignore": []
 }
 
+
 print("Updateing Database")
 url = 'https://echo-cave.github.io/cave/cave.txt'
+# Config End
 r = requests.get(url)
 with open("cave.txt", "w", encoding="utf-8") as f:
   f.write(str(r.text).strip())
@@ -62,7 +63,7 @@ def index():
     return render_template("index.html")
 
 @app.route('/api')
-@limiter.limit("20/minute")
+@limiter.limit("4/second")
 def api():
   type = request.args.get("encode")
   if type=="js":
