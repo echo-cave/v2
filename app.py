@@ -24,7 +24,9 @@ def get_cave():
     line=linecache.getline(os.getcwd()+'/cave.txt',i)
     return str(line)
 
-print("\033[42m" + get_cave() + "\033[0m" + "           " + "Powerd By RDPStudio")
+print("\033[45mEcho-Cave v2.0.1-dev\033[0m" + "  " + "\033[46mPowerd By RDPStudio\033[0m")
+print("\n")
+print("\033[36m" + get_cave() + "\033[0m")
 
 @app.route('/')
 def index():
@@ -41,4 +43,4 @@ def api():
     return get_cave()
 
 if (__name__ == "__main__"):
-    app.run(host = '0.0.0.0', port = 31000)
+    app.run(host = '0.0.0.0', port = 31000, debug=False)
