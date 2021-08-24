@@ -6,9 +6,14 @@ import random
 import os
 import linecache
 
-
 app = Flask(__name__)
 CORS(app, supports_credentials=True)
+
+print("Updateing Database")
+url = 'https://cdn.jsdelivr.net/gh/echo-cave/cave@latest/cave.txt' 
+r = requests.get(url)
+with open("cave.txt", "wb") as f:
+  f.write(r.content)
 
 def get_cave():
     txt = open(os.getcwd()+'/cave.txt','rb')
