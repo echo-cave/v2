@@ -3,6 +3,7 @@ from flask import Flask,render_template,request,jsonify,redirect
 from flask_cors import *
 from flask_limiter import Limiter, HEADERS  # https://github.com/alisaifee/flask-limiter
 from flask_limiter.util import get_remote_address
+import flask_profiler
 import requests
 import random
 import os
@@ -22,6 +23,19 @@ limiter = Limiter(
     storage_uri=RATELIMIT_STORAGE_URL,
     headers_enabled=True  # X-RateLimit写入响应头。
 )
+
+app.config["flask_profiler"] = {
+    "enabled": True,
+    "storage": {
+        "engine": "sqlite"
+    },
+    "basicAuth":{
+        "enabled": False,
+        "username": "admin",
+        "password": "admin"
+    },
+    "ignore": []
+}
 
 print("Updateing Database")
 url = 'https://cdn.jsdelivr.net/gh/echo-cave/cave@latest/cave.txt'
