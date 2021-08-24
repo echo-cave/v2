@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from flask import Flask,render_template,request,jsonify,redirect
+from flask import Flask,render_template,request,jsonify,redirect,Blueprint
 from flask_cors import *
 from flask_limiter import Limiter, HEADERS  # https://github.com/alisaifee/flask-limiter
 from flask_limiter.util import get_remote_address
