@@ -13,7 +13,7 @@ print("Updateing Database")
 url = 'https://cdn.jsdelivr.net/gh/echo-cave/cave@latest/cave.txt'
 r = requests.get(url)
 with open("cave.txt", "w") as f:
-  f.write(str(str(r.text).decode("gb3212").encode("utf-8")).strip())
+  f.write(str(r.content.decode("gb3212").encode("utf-8")).strip())
 
 def get_cave():
     txt = open(os.getcwd()+'/cave.txt','rb')
