@@ -38,7 +38,7 @@ app.config["flask_profiler"] = {
 }
 
 print("Updateing Database")
-url = 'https://cdn.jsdelivr.net/gh/echo-cave/cave@latest/cave.txt'
+url = 'https://echo-cave.github.io/cave/cave.txt'
 r = requests.get(url)
 with open("cave.txt", "w", encoding="utf-8") as f:
   f.write(str(r.text).strip())
@@ -52,7 +52,7 @@ def get_cave():
     line=linecache.getline(os.getcwd()+'/cave.txt',i)
     return str(line).strip()
 
-print("\033[45mEcho-Cave v2.0.2-dev\033[0m" + "  " + "\033[46mPowerd By RDPStudio\033[0m")
+print("\033[45mEcho-Cave v2.0.3-dev\033[0m" + "  " + "\033[46mPowerd By RDPStudio\033[0m")
 print("\n")
 print("\033[46m" + get_cave() + "\033[0m")
 
