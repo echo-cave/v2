@@ -72,12 +72,21 @@ def api():
   else:
     return get_cave()
 
+flask_profiler.init_app(app)
+
+urlPath = "statics"
+
 fp = Blueprint(
         'statics', __name__,
         url_prefix="/" + urlPath,
         static_folder="statics_template/", static_url_path='/static/dist')
 
-flask_profiler.init_app(app)
+@fp.route("/".format(urlPath))
+    @auth.login_required
+    def index():
+        return fp.send_static_file("index.html")
+
+app.register_blueprint(fp)
 
 if (__name__ == "__main__"):
     app.run(host = '0.0.0.0', port = 31000, debug=False)
