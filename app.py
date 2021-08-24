@@ -17,7 +17,7 @@ with open("cave.txt", "w") as f:
 
 def get_cave():
     txt = open(os.getcwd()+'/cave.txt','rb')
-    data = txt.read().decode('utf-8')
+    data = str(txt.read())
     txt.close()
     n = data.count('\n')
     i = random.randint(1, (n+1))
