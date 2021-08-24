@@ -82,9 +82,8 @@ fp = Blueprint(
         static_folder="statics_template/", static_url_path='/static/dist')
 
 @fp.route("/".format(urlPath))
-    @auth.login_required
-    def index():
-        return fp.send_static_file("index.html")
+def index():
+    return fp.send_static_file("index.html")
 
 app.register_blueprint(fp)
 
