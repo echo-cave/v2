@@ -10,10 +10,10 @@ app = Flask(__name__)
 CORS(app, supports_credentials=True)
 
 print("Updateing Database")
-url = 'https://cdn.jsdelivr.net/gh/echo-cave/cave@latest/cave.txt' 
+url = 'https://cdn.jsdelivr.net/gh/echo-cave/cave@latest/cave.txt'
 r = requests.get(url)
-with open("cave.txt", "wb") as f:
-  f.write(str(r.content).strip())
+with open("cave.txt", "w") as f:
+  f.write(str(r.content.decode("utf-8")).strip())
 
 def get_cave():
     txt = open(os.getcwd()+'/cave.txt','rb')
